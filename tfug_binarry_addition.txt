@@ -1,0 +1,13 @@
+
+
+        Hidden = sigmoid(np.dot(X, W_ih) + np.dot(Hidden_values[-1],W_hh))
+        Output = sigmoid(np.dot(Hidden, W_ho))
+
+
+        Output_deltas.append((Delta) * d_sigmoid(Output))
+        total_err += np.abs(Delta[0])
+
+
+        dW_ho += np.atleast_2d(     Hidden).T.dot(Output_delta)
+        dW_hh += np.atleast_2d(prev_Hidden).T.dot(Hidden_delta)
+        dW_ih += X.T.dot(Hidden_delta)
